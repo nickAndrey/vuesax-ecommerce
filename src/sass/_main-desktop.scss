@@ -1,0 +1,10 @@
+@media (min-width: $desktop) {
+  .wrapper {
+    padding: 30px 36px 34px;
+    .goods-and-filters {
+      display: grid;
+      grid-template-columns: 20% 1fr;
+      gap: 20px;
+    }
+  }
+}

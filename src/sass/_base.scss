@@ -1,0 +1,25 @@
+@mixin reset-ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin panel {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.135216);
+  border-radius: 8px;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 15% 1fr;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: #2c2c2c;
+}
