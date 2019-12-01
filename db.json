@@ -1,0 +1,76 @@
+{
+  "goods": [
+    {
+      "title": "Apple Watch Series 4 GPS",
+      "description": "Redesigned from scratch and completely revised.",
+      "rating": 3.4,
+      "src": "/img/goods/apple-watch.png",
+      "srcWebp": "/img/goods/apple-watch.webp",
+      "price": "399"
+    },
+    {
+      "title": "JBL Speaker",
+      "description": "Redesigned from scratch and completely revised.",
+      "rating": 5.0,
+      "src": "/img/goods/jbl-speaker.png",
+      "srcWebp": "/img/goods/jbl-speaker.webp",
+      "price": "199"
+    },
+    {
+      "title": "Apple iPhone X 128GB",
+      "description": "Redesigned from scratch and completely revised.",
+      "rating": 4.4,
+      "src": "/img/goods/iphone-x.png",
+      "srcWebp": "/img/goods/iphone-x.webp",
+      "price": "899"
+    },
+    {
+      "title": "Beats Headphones",
+      "description": "Redesigned from scratch and completely revised.",
+      "rating": 3.4,
+      "src": "/img/goods/",
+      "srcWebp": "/img/goods/",
+      "price": "459"
+    },
+    {
+      "title": "Apple Macbook Pro 512GB SSD",
+      "description": "Redesigned from scratch and completely revised.",
+      "rating": 4.5,
+      "src": "/img/goods/macbook-pro.png",
+      "srcWebp": "/img/goods/mackbook-pro.webp",
+      "price": "2499"
+    },
+    {
+      "title": "Apple iPad Pro 64GB",
+      "description": "Redesigned from scratch and completely revised.",
+      "rating": 5.0,
+      "src": "/img/goods/ipad-pro.png",
+      "srcWebp": "/img/goods/ipad-pro.webp",
+      "price": "899"
+    },
+    {
+      "title": "Apple Homepod",
+      "description": "Redesigned from scratch and completely revised.",
+      "rating": 3.3,
+      "src": "/img/goods/homepod.png",
+      "srcWebp": "/img/goods/homepod.webp",
+      "price": "399"
+    },
+    {
+      "title": "JBuds Air Wireless Bluetooth…",
+      "description": "Redesigned from scratch and completely revised.",
+      "rating": 5.0,
+      "src": "/img/goods/",
+      "srcWebp": "/img/goods/",
+      "price": "2499"
+    },
+    {
+      "title": "Apple Magic Mouse",
+      "description": "Redesigned from scratch and completely revised.",
+      "rating": 4.4,
+      "src": "/img/goods/magic-mouse.png",
+      "srcWebp": "/img/goods/magic-mouse.webp",
+      "price": "99"
+    }
+  ]
+}
