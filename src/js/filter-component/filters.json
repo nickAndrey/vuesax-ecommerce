@@ -1,0 +1,119 @@
+[
+  {
+    "multirange": []
+  },
+  {
+    "sliderrange": {
+      "min": 10,
+      "max": 10000
+    }
+  },
+  {
+    "category": [
+      {
+        "id": "0",
+        "title": "Cell Phones",
+        "result": "1920"
+      },
+      {
+        "id": "1",
+        "title": "Computers & Tablets",
+        "result": "1820"
+      },
+      {
+        "id": "2",
+        "title": "Cell Phone Accessories",
+        "result": "462"
+      },
+      {
+        "id": "3",
+        "title": "Appliances",
+        "result": "6556"
+      },
+      {
+        "id": "4",
+        "title": "Audio",
+        "result": "120"
+      },
+      {
+        "id": "5",
+        "title": "iPhone Accessories",
+        "result": "353"
+      },
+      {
+        "id": "6",
+        "title": "Cameras & Camcorders",
+        "result": "45"
+      },
+      {
+        "id": "7",
+        "title": "iPhone Cases & Clips",
+        "result": "456"
+      },
+      {
+        "id": "8",
+        "title": "TV & Home Theater",
+        "result": "55"
+      },
+      {
+        "id": "9",
+        "title": "Small Kitchen Appliances",
+        "result": "10"
+      }
+    ]
+  },
+  {
+    "brand": [
+      {
+        "id": "0",
+        "title": "Insigni",
+        "result": "220"
+      },
+      {
+        "id": "1",
+        "title": "Samsung",
+        "result": "120"
+      },
+      {
+        "id": "2",
+        "title": "Apple",
+        "result": "320"
+      },
+      {
+        "id": "3",
+        "title": "HP",
+        "result": "32"
+      },
+      {
+        "id": "4",
+        "title": "Sony",
+        "result": "520"
+      },
+      {
+        "id": "5",
+        "title": "Metra",
+        "result": "55"
+      },
+      {
+        "id": "6",
+        "title": "Dyne",
+        "result": "120"
+      },
+      {
+        "id": "7",
+        "title": "LG",
+        "result": "98"
+      },
+      {
+        "id": "8",
+        "title": "Canon",
+        "result": "99"
+      },
+      {
+        "id": "9",
+        "title": "Speck",
+        "result": "575"
+      }
+    ]
+  }
+]

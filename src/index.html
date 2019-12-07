@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="description" content="..." />
-    <link type="preload" ... as="font" />
+    <link type="preload" as="font" />
     <link rel="stylesheet" href="./style-mobile.bundle.css" />
     <link
       rel="stylesheet"
@@ -20,7 +20,7 @@
     <title>Document</title>
   </head>
   <body>
-    <nav class="side-nav"></nav>
+    <!--    <nav class="side-nav"></nav>-->
     <main class="wrapper">
       <header class="wrapper__header">
         <section class="wrapper__header__navbar">
@@ -91,18 +91,104 @@
           </button>
         </section>
       </header>
-      <section class="goods-and-filters">
+      <section class="products-and-filters">
         <section class="filters">
-          filters
+          <span>filters</span>
+          <section class="multirange">
+            multirange
+            <div class="form-group">
+              <input type="radio" name="multirange" />
+              $10
+            </div>
+            <div class="form-group">
+              <input type="radio" name="multirange" />
+              $10-$100
+            </div>
+            <div class="form-group">
+              <input type="radio" name="multirange" />
+              $100-$500
+            </div>
+            <div class="form-group">
+              <input type="radio" name="multirange" />
+              $500
+            </div>
+            <div class="form-group">
+              <input type="radio" name="multirange" />
+              All
+            </div>
+          </section>
+          <section class="slider-range">
+            <input type="range" title="range">
+          </section>
+          <section class="category">Category</section>
+          <section class="brand">Brand</section>
         </section>
-        <section class="goods"></section>
+        <section class="products">
+          <div class="products__setting">
+            <span class="filter-results">Filters result: </span>
+            <div class="right-group">
+              <button type="button" aria-label="choose smth">Default</button>
+              <button type="button" aria-label="grid view" class="grid-view">
+                <img src="/img/navbar/grid.svg" alt="grid view" />
+              </button>
+              <button type="button" aria-label="list view" class="list-view">
+                <img src="/img/navbar/list.svg" alt="list view" />
+              </button>
+            </div>
+          </div>
+          <div class="products__search-box">
+            <input
+              type="text"
+              aria-label="search product"
+              title="search products"
+              placeholder="Search..."
+            />
+            <button type="button" aria-label="go search" class="go-search">
+              <img src="/img/navbar/search.svg" alt="search icon" />
+            </button>
+          </div>
+        </section>
       </section>
+      <cart-component></cart-component>
     </main>
 
     <template id="product">
       <div class="product">
-        <img src="" alt="" class="product__img">
+        <img src="" alt="" class="product__img" />
+        <div class="product__info">
+          <div class="price-info">
+            <button class="vote"></button>
+            <span class="price"></span>
+          </div>
+          <h4 class="title"></h4>
+          <p class="description"></p>
+          <div class="controls">
+            <app-button
+              icon="/img/goods/like.svg"
+              aria-label="like product"
+              class="like"
+            >
+              wish list
+            </app-button>
+            <app-add-to-cart
+              icon="/img/goods/add-to-cart.svg"
+              aria-label="add product"
+              class="add"
+            >
+              add to cart
+            </app-add-to-cart>
+          </div>
+        </div>
+      </div>
+    </template>
 
+    <template id="cart">
+      <div class="row">
+        <div class="product-id"></div>
+        <div class="product-title"></div>
+        <div class="product-describe"></div>
+        <div class="product-price"></div>
+        <app-button>remove product</app-button>
       </div>
     </template>
 
