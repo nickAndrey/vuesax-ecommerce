@@ -21,73 +21,55 @@ class Filters {
         <span class="result"></span>
       </div>`;
 
-    const radioTeml = document.createElement('template');
-    radioTeml.innerHTML = `
-        <radio-button></radio-button>
-    `;
     data.map((item) => {
       if (item.category) {
         this.section = 'category';
         this.component = 'app-checkbox';
-        this.renderCategory(
-          item.category,
-          checkboxTempl,
-          this.section,
-          this.component
-        );
-      } else if (item.brand) {
+        this.renderCategory(item.category, checkboxTempl, this.section, this.component);
+      }
+
+      if (item.brand) {
         this.section = 'brand';
         this.component = 'app-checkbox';
-        this.renderCategory(
-          item.brand,
-          checkboxTempl,
-          this.section,
-          this.component
-        );
-      } else {
+        this.renderCategory(item.brand, checkboxTempl, this.section, this.component);
+      }
+
+      if (item.multirange) {
+        const radioTeml = document.createElement('template');
+        radioTeml.innerHTML = `
+            <radio-button></radio-button>         
+          `;
         this.section = 'radio-group';
         this.component = 'radio-button';
-        this.renderRadio(
-          item.multirange,
-          radioTeml,
-          this.section,
-          this.component
-        );
+        this.renderRadio(item.multirange, radioTeml, this.section, this.component);
       }
     });
   }
 
   renderRadio(data, template, section, component) {
-    for (let item in data) {
-      if (data.hasOwnProperty(item)) {
-        const clone = template.content.cloneNode(true);
-
-        const inp = clone.querySelector(component);
-        inp.name = data[item].name;
-        inp.textContent = data[item].title;
-
-        clone.querySelector(section).appendChild(inp);
-        this.filtersNode.querySelector('.multirange').appendChild(inp);
-      }
-    }
+    data.map((item) => {
+      const clone = template.content.cloneNode(true);
+      const inp = clone.querySelector(component);
+      inp.name = item.name;
+      inp.textContent = item.title;
+      this.filtersNode.querySelector('.multirange radio-group').appendChild(inp);
+    });
   }
 
   renderCategory(data, template, section, component) {
-    for (let item in data) {
-      if (data.hasOwnProperty(item)) {
-        const clone = template.content.cloneNode(true);
-        const formGroup = clone.querySelector('.form-group');
+    data.map((item) => {
+      const clone = template.content.cloneNode(true);
+      const formGroup = clone.querySelector('.form-group');
 
-        const appComponent = formGroup.querySelector(component);
-        appComponent.innerText = data[item].title;
-        appComponent.id = `${section}_${data[item].id}`;
+      const appComponent = formGroup.querySelector(component);
+      appComponent.innerText = item.title;
+      appComponent.id = `${section}_${item.id}`;
 
-        const result = formGroup.querySelector('.result');
-        result.textContent = data[item].result;
+      const result = formGroup.querySelector('.result');
+      result.textContent = item.result;
 
-        this.filtersNode.querySelector(`.${section}`).appendChild(formGroup);
-      }
-    }
+      this.filtersNode.querySelector(`.${section}`).appendChild(formGroup);
+    });
   }
 }
 
