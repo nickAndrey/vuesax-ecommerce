@@ -7,28 +7,28 @@
 
   const renderProduct = (data) => {
     const template = document.querySelector('#product');
-    Object.entries(data).map(([key, value]) => {
+    data.map((item, idx) => {
       const clone = template.content.cloneNode(true);
       const productCard = clone.querySelector('.product');
 
       const prodImg = productCard.querySelector('.product__img');
-      prodImg.src = value.src;
-      prodImg.alt = value.title;
+      prodImg.src = item.src;
+      prodImg.alt = item.title;
 
       const prodVote = productCard.querySelector('.vote');
-      prodVote.textContent = value.rating;
+      prodVote.textContent = item.rating;
 
       const prodPrice = productCard.querySelector('.price');
-      prodPrice.textContent = '$' + value.price;
+      prodPrice.textContent = '$' + item.price;
 
       const prodTitle = productCard.querySelector('.title');
-      prodTitle.textContent = value.title;
+      prodTitle.textContent = item.title;
 
       const prodDescribe = productCard.querySelector('.description');
-      prodDescribe.textContent = value.description;
+      prodDescribe.textContent = item.description;
 
       const addToCartBtn = productCard.querySelector('app-add-to-cart');
-      addToCartBtn.dataset.index = key;
+      addToCartBtn.dataset.index = idx;
 
       const prodList = document.querySelector('.products');
       prodList.append(productCard);
