@@ -6,7 +6,9 @@
       "rating": 3.4,
       "src": "/img/goods/apple-watch.png",
       "srcWebp": "/img/goods/apple-watch.webp",
-      "price": "399"
+      "price": "399",
+      "brand": ["apple"],
+      "category": "accessories"
     },
     {
       "title": "JBL Speaker",
@@ -14,7 +16,9 @@
       "rating": 5.0,
       "src": "/img/goods/jbl-speaker.png",
       "srcWebp": "/img/goods/jbl-speaker.webp",
-      "price": "199"
+      "price": "199",
+      "brand": ["JBL"],
+      "category": "audio"
     },
     {
       "title": "Apple iPhone X 128GB",
@@ -22,7 +26,9 @@
       "rating": 4.4,
       "src": "/img/goods/iphone-x.png",
       "srcWebp": "/img/goods/iphone-x.webp",
-      "price": "899"
+      "price": "899",
+      "brand": ["apple"],
+      "category": "cell-phones"
     },
     {
       "title": "Beats Headphones",
@@ -30,7 +36,9 @@
       "rating": 3.4,
       "src": "/img/goods/beats-headphones.png",
       "srcWebp": "/img/goods/beats-headphones.webp",
-      "price": "459"
+      "price": "459",
+      "brand": ["beats", "sony"],
+      "category": "audio"
     },
     {
       "title": "Apple Macbook Pro 512GB SSD",
@@ -38,7 +46,9 @@
       "rating": 4.5,
       "src": "/img/goods/macbook-pro.png",
       "srcWebp": "/img/goods/mackbook-pro.webp",
-      "price": "2499"
+      "price": "2499",
+      "brand": ["apple"],
+      "category": "computers & tablets"
     },
     {
       "title": "Apple iPad Pro 64GB",
@@ -46,7 +56,9 @@
       "rating": 5.0,
       "src": "/img/goods/ipad-pro.png",
       "srcWebp": "/img/goods/ipad-pro.webp",
-      "price": "899"
+      "price": "899",
+      "brand": ["apple"],
+      "category": "computers & tablets"
     },
     {
       "title": "Apple Homepod",
@@ -54,7 +66,9 @@
       "rating": 3.3,
       "src": "/img/goods/homepod.png",
       "srcWebp": "/img/goods/homepod.webp",
-      "price": "399"
+      "price": "399",
+      "brand": ["apple"],
+      "category": "audio"
     },
     {
       "title": "JBuds Air Wireless Bluetooth…",
@@ -62,7 +76,9 @@
       "rating": 5.0,
       "src": "/img/goods/jlab-audio-wireless.png",
       "srcWebp": "/img/goods/jlab-audio-wireless.webp",
-      "price": "2499"
+      "price": "2499",
+      "brand": ["apple"],
+      "category": "audio"
     },
     {
       "title": "Apple Magic Mouse",
@@ -70,7 +86,9 @@
       "rating": 4.4,
       "src": "/img/goods/magic-mouse.png",
       "srcWebp": "/img/goods/magic-mouse.webp",
-      "price": "99"
+      "price": "99",
+      "brand": ["apple"],
+      "category": "accessories"
     }
   ]
 }

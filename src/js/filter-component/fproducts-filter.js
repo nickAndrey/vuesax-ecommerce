@@ -36,9 +36,7 @@ class Filters {
 
       if (item.multirange) {
         const radioTeml = document.createElement('template');
-        radioTeml.innerHTML = `
-            <radio-button></radio-button>         
-          `;
+        radioTeml.innerHTML = `<radio-button></radio-button>`;
         this.section = 'radio-group';
         this.component = 'radio-button';
         this.renderRadio(item.multirange, radioTeml, this.section, this.component);
