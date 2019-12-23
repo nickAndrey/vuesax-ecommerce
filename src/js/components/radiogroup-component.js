@@ -61,7 +61,7 @@ class RadioGroup extends HTMLElement {
       this.radios[selected].setAttribute('aria-checked', true);
     } else {
       this._selected = 0;
-      this.radios[0].setAttribute('tabindex', 0);
+      // this.radios[0].setAttribute('tabindex', 0);
     }
     this.addEventListener('click', this.handleClick.bind(this));
   }
