@@ -1,5 +1,7 @@
 export class StoreService {
-  constructor() {}
+  constructor() {
+    this.productsCounter = null;
+  }
 
   getProducts() {
     let productsList = localStorage.getItem('products');
@@ -15,7 +17,12 @@ export class StoreService {
     const index = productsList.findIndex((item) => item.id === product[0].id);
     if (index === -1) {
       productsList = [...productsList, ...product];
+      this.productsCounter = productsList.length;
     }
     localStorage.setItem('products', JSON.stringify(productsList));
+  }
+
+  getProductsCount() {
+    return this.productsCounter;
   }
 }
