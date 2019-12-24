@@ -1,7 +1,5 @@
 export class StoreService {
-  constructor() {
-    this.productsCounter = null;
-  }
+  constructor() {}
 
   getProducts() {
     let productsList = localStorage.getItem('products');
@@ -17,12 +15,14 @@ export class StoreService {
     const index = productsList.findIndex((item) => item.id === product[0].id);
     if (index === -1) {
       productsList = [...productsList, ...product];
-      this.productsCounter = productsList.length;
     }
     localStorage.setItem('products', JSON.stringify(productsList));
   }
 
-  getProductsCount() {
-    return this.productsCounter;
+  updateProductsCounter() {
+    const counter = document.querySelector('label-component');
+    if (counter) {
+      counter.setAttribute('counter', JSON.stringify(this.getProducts().length));
+    }
   }
 }

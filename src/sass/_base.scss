@@ -10,7 +10,8 @@
   border-radius: 8px;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -23,5 +24,33 @@ body {
   font-weight: normal;
   font-size: 14px;
   color: #2c2c2c;
-  background: #F9F9F9;
+  background: #f9f9f9;
+}
+
+.products-table {
+  border-collapse: collapse;
+  width: 100%;
+  td,
+  th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #6f64f8;
+    color: white;
+  }
+}
+
+.notifications {
+  position: relative;
+  cursor: pointer;
 }

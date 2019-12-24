@@ -28,6 +28,7 @@ class AddToCart extends AppButton {
     this.addEventListener(`click`, (evt) => {
       const target = evt.target;
       this.addToStore(target);
+      this.storeService.updateProductsCounter();
     });
   }
 }

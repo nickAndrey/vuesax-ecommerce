@@ -2,10 +2,10 @@
   const apiProducts = `https://my-json-server.typicode.com/nickAndrey/vuesax-ecommerce/goods`;
   fetch(apiProducts)
     .then((resp) => resp.json())
-    .then((data) => renderProduct(data))
+    .then((data) => render(data))
     .catch((err) => console.log(err));
 
-  const renderProduct = (data) => {
+  const render = (data) => {
     const template = document.querySelector('#product');
     data.map((item, idx) => {
       const clone = template.content.cloneNode(true);
