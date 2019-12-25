@@ -6,19 +6,32 @@
     .catch((err) => console.log(err));
 
   const render = (data) => {
+    const template = document.querySelector('#product');
     data.map((item, idx) => {
-      const productComponent = document.createElement('product-component');
-      productComponent.innerHTML = `
-        <span slot="title">${item.title}</span>
-        <span slot="vote">${item.rating}</span>
-        <span slot="price">${item.price}</span>
-        <span slot="description">${item.description}</span>
-        <img slot="product-image" src="${item.src}" alt="${item.title}" class="product__img" />
-      `;
-      // const addToCartBtn = productCard.querySelector('app-add-to-cart');
-      // addToCartBtn.dataset.index = idx;
+      const clone = template.content.cloneNode(true);
+      const productCard = clone.querySelector('.product');
+
+      const prodImg = productCard.querySelector('.product__img');
+      prodImg.src = item.src;
+      prodImg.alt = item.title;
+
+      const prodVote = productCard.querySelector('.vote');
+      prodVote.textContent = item.rating;
+
+      const prodPrice = productCard.querySelector('.price');
+      prodPrice.textContent = '$' + item.price;
+
+      const prodTitle = productCard.querySelector('.title');
+      prodTitle.textContent = item.title;
+
+      const prodDescribe = productCard.querySelector('.description');
+      prodDescribe.textContent = item.description;
+
+      const addToCartBtn = productCard.querySelector('app-add-to-cart');
+      addToCartBtn.dataset.index = idx;
+
       const prodList = document.querySelector('.products');
-      prodList.append(productComponent);
+      prodList.append(productCard);
     });
   };
 })();
