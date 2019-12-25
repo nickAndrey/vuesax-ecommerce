@@ -138,86 +138,86 @@
           }
         }
         /** Products in grid format **/
-        .product {
-          @include panel;
-          padding: 45px 22px 0;
-          display: flex;
-          flex-direction: column;
-          &__img {
-            display: inherit;
-            margin: auto;
-          }
-          &__info {
-            display: flex;
-            flex-direction: column;
-            margin-top: 23px;
-            .price-info {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-            }
-            .vote {
-              padding: 6px 31px 6px 10px;
-              border-radius: 8px;
-              border: none;
-              color: #ffffff;
-              background: #6f64f8;
-              position: relative;
-              cursor: pointer;
-              &:after {
-                content: url('/img/goods/star.svg');
-                position: absolute;
-                right: 10px;
-              }
-              * {
-                pointer-events: none;
-              }
-            }
-            .price {
-              font-weight: bold;
-            }
-            .title {
-              margin: 16px 0 0;
-              font-weight: bolder;
-            }
-            .description {
-              font-weight: 300;
-              margin: 5px 0 0;
-            }
-            .controls {
-              display: flex;
-              margin: 22px -22px 0;
-              .like,
-              .add {
-                width: 50%;
-                padding: 13px 0;
-                text-transform: uppercase;
-                border: none;
-                font-weight: bold;
-                cursor: pointer;
-                position: relative;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                * {
-                  pointer-events: none;
-                }
-                &:before {
-                  position: absolute;
-                }
-              }
-              .like {
-                border-radius: 0 0 0 8px;
-                background: #ededed;
-              }
-              .add {
-                border-radius: 0 0 8px 0;
-                background: #6f64f8;
-                color: #ffffff;
-              }
-            }
-          }
-        }
+        //.product {
+        //  @include panel;
+        //  padding: 45px 22px 0;
+        //  display: flex;
+        //  flex-direction: column;
+        //  &__img {
+        //    display: inherit;
+        //    margin: auto;
+        //  }
+        //  &__info {
+        //    display: flex;
+        //    flex-direction: column;
+        //    margin-top: 23px;
+        //    .price-info {
+        //      display: flex;
+        //      justify-content: space-between;
+        //      align-items: center;
+        //    }
+        //    .vote {
+        //      padding: 6px 31px 6px 10px;
+        //      border-radius: 8px;
+        //      border: none;
+        //      color: #ffffff;
+        //      background: #6f64f8;
+        //      position: relative;
+        //      cursor: pointer;
+        //      &:after {
+        //        content: url('/img/goods/star.svg');
+        //        position: absolute;
+        //        right: 10px;
+        //      }
+        //      * {
+        //        pointer-events: none;
+        //      }
+        //    }
+        //    .price {
+        //      font-weight: bold;
+        //    }
+        //    .title {
+        //      margin: 16px 0 0;
+        //      font-weight: bolder;
+        //    }
+        //    .description {
+        //      font-weight: 300;
+        //      margin: 5px 0 0;
+        //    }
+        //    .controls {
+        //      display: flex;
+        //      margin: 22px -22px 0;
+        //      .like,
+        //      .add {
+        //        width: 50%;
+        //        padding: 13px 0;
+        //        text-transform: uppercase;
+        //        border: none;
+        //        font-weight: bold;
+        //        cursor: pointer;
+        //        position: relative;
+        //        display: flex;
+        //        justify-content: center;
+        //        align-items: center;
+        //        * {
+        //          pointer-events: none;
+        //        }
+        //        &:before {
+        //          position: absolute;
+        //        }
+        //      }
+        //      .like {
+        //        border-radius: 0 0 0 8px;
+        //        background: #ededed;
+        //      }
+        //      .add {
+        //        border-radius: 0 0 8px 0;
+        //        background: #6f64f8;
+        //        color: #ffffff;
+        //      }
+        //    }
+        //  }
+        //}
       }
     }
   }
