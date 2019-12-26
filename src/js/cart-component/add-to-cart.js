@@ -11,12 +11,16 @@ class AddToCart extends AppButton {
     return [`id`];
   }
 
-  addToStore(elm) {
-    const parent = elm.closest(`.product__info`);
+  get dataIndex() {
+    return this.dataset.index;
+  }
+
+  addToStore() {
+    const parent = document.querySelector(`product-component[index="${this.dataIndex}"]`);
     this.storeService.setProduct([
       {
-        id: this.getAttribute(`data-index`),
-        price: parent.querySelector(`.price-info .price`).textContent.substr(1),
+        id: this.dataIndex,
+        price: parent.querySelector(`.price`).textContent.substr(1),
         title: parent.querySelector(`.title`).textContent,
         describe: parent.querySelector(`.description`).textContent,
       },
@@ -25,9 +29,8 @@ class AddToCart extends AppButton {
 
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener(`click`, (evt) => {
-      const target = evt.target;
-      this.addToStore(target);
+    this.addEventListener(`click`, () => {
+      this.addToStore();
       this.storeService.updateProductsCounter();
     });
   }
