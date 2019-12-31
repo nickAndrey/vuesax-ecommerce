@@ -1,14 +1,24 @@
-(function() {
-  const apiProducts = `https://my-json-server.typicode.com/nickAndrey/vuesax-ecommerce/goods`;
-  fetch(apiProducts)
-    .then((resp) => resp.json())
-    .then((data) => render(data))
-    .catch((err) => console.log(err));
+import { Filters } from './filter-component/fproducts-filter';
 
-  const render = (data) => {
+class GetProducts {
+  constructor() {
+    this.apiProducts = `https://my-json-server.typicode.com/nickAndrey/vuesax-ecommerce/goods`;
+    this.filters = new Filters();
+  }
+
+  onInit() {
+    fetch(this.apiProducts)
+      .then((resp) => resp.json())
+      .then((data) => this.render(data))
+      .then(() => this.filters.handleFilter())
+      .catch((errMsg) => console.error(errMsg));
+  }
+
+  render(data) {
     data.map((item, idx) => {
       const productComponent = document.createElement('product-component');
       productComponent.setAttribute('index', idx);
+      productComponent.setAttribute('category', item.category);
       productComponent.innerHTML = `
         <img src="${item.src}" alt="${item.title}" class="product__img" slot="product-img"/>
         <button class="vote" slot="rating">${item.rating}</button>
@@ -32,5 +42,7 @@
       const prodList = document.querySelector('.products');
       prodList.append(productComponent);
     });
-  };
-})();
+  }
+}
+const getProducts = new GetProducts();
+getProducts.onInit();

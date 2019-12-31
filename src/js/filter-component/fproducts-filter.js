@@ -1,4 +1,6 @@
-class Filters {
+import { CheckboxComponent } from '../components/checkbox-component';
+
+export class Filters {
   constructor() {
     this.api = './filters.json';
     this.filtersNode = document.querySelector('.filters');
@@ -18,20 +20,20 @@ class Filters {
 
     checkboxTempl.innerHTML = `
       <div class="form-group">
-        <app-checkbox></app-checkbox>
+        <filter-component></filter-component>
         <span class="result"></span>
       </div>`;
 
     data.map((item) => {
       if (item.category) {
         this.section = 'category';
-        this.component = 'app-checkbox';
+        this.component = 'filter-component';
         this.renderCategory(item.category, checkboxTempl, this.section, this.component);
       }
 
       if (item.brand) {
         this.section = 'brand';
-        this.component = 'app-checkbox';
+        this.component = 'filter-component';
         this.renderCategory(item.brand, checkboxTempl, this.section, this.component);
       }
 
@@ -47,7 +49,7 @@ class Filters {
     data.map((item) => {
       const radioBtn = document.createElement(component);
       radioBtn.textContent = item.title;
-      fragment.appendChild(radioBtn)
+      fragment.appendChild(radioBtn);
     });
     const radioGroup = document.createElement('radio-group');
     radioGroup.appendChild(fragment);
@@ -62,6 +64,7 @@ class Filters {
       const appComponent = formGroup.querySelector(component);
       appComponent.innerText = item.title;
       appComponent.id = `${section}_${item.id}`;
+      appComponent.setAttribute('filter-by', item.title);
 
       const result = formGroup.querySelector('.result');
       result.textContent = item.result;
@@ -69,7 +72,35 @@ class Filters {
       this.filtersNode.querySelector(`.${section}`).appendChild(formGroup);
     });
   }
+
+  handleFilter() {
+    const filters = document.querySelectorAll('[filter-by]');
+    filters.forEach((item) => {});
+  }
 }
 
 let filters = new Filters();
 filters.fetchData();
+
+class FilterComponent extends CheckboxComponent {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.attachEvents(this);
+  }
+
+  attachEvents(node) {
+    node.addEventListener('click', (evt) => {
+      const products = document.querySelectorAll('product-component');
+      [...products].map((product) => {
+        if (product.getAttribute('category') !== evt.target.getAttribute('filter-by')) {
+          product.setAttribute('hidden', 'hidden');
+        }
+      });
+    });
+  }
+}
+customElements.define('filter-component', FilterComponent);

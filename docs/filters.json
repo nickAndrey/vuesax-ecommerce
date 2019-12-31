@@ -38,12 +38,12 @@
     "category": [
       {
         "id": "0",
-        "title": "Cell Phones",
+        "title": "cell-phones",
         "result": "1920"
       },
       {
         "id": "1",
-        "title": "Computers & Tablets",
+        "title": "computers & tablets",
         "result": "1820"
       },
       {
@@ -58,7 +58,7 @@
       },
       {
         "id": "4",
-        "title": "Audio",
+        "title": "audio",
         "result": "120"
       },
       {

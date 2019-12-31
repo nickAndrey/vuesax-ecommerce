@@ -16,6 +16,7 @@ class RadioButton extends HTMLElement {
           display: inline-block;
           position: relative;
           cursor: default;
+          margin-bottom: 15px;
         }    
         :host(:focus) {
           outline: 0;
@@ -26,13 +27,13 @@ class RadioButton extends HTMLElement {
         :host::before {
           content: '';
           display: block;
-          width: 10px;
-          height: 10px;
+          width: 15px;
+          height: 15px;
           border: 1px solid #eee;
           background: #eee;
           position: absolute;
-          left: -18px;
-          top: 3px;
+          left: -23px;
+          top: 1px;
           border-radius: 50%;
         }      
         :host([aria-checked="true"])::before {

@@ -1,4 +1,4 @@
-class CheckboxComponent extends HTMLElement {
+export class CheckboxComponent extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
