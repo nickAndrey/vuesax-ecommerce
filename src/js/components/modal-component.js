@@ -18,12 +18,12 @@ class ModalComponent extends HTMLElement {
   attachEvents() {
     const cancelButton = this.shadowRoot.querySelector('.close');
     cancelButton.addEventListener('click', () => {
-      this.remove();
+      this.disconnectedCallback();
     });
   }
 
   disconnectedCallback() {
-    console.log('closed');
+    this.remove();
   }
 
   render() {

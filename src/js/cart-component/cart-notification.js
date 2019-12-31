@@ -40,15 +40,19 @@ class CartNotification {
         <th>name</th>
         <th>price</th>
         <th>description</th>
+        <th>count</th>              
+        <th>action</th>              
     </tr>`;
     table.classList.add('products-table');
-    products.map((item, idx) => {
+    products.map((item) => {
       const row = `
         <tr>
           <td>${item.id}</td>
           <td>${item.title}</td>
           <td>${item.price}</td>
           <td>${item.describe}</td>
+          <td>count-component</td>
+          <td>remove item</td>
         </tr>
       `;
       table.innerHTML += row;

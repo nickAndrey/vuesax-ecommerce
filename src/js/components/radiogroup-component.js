@@ -1,48 +1,61 @@
 class RadioButton extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({ mode: 'open' });
   }
+
   connectedCallback() {
-    this.setAttribute('role', 'radio');
-    this.setAttribute('tabindex', -1);
-    this.setAttribute('aria-checked', false);
-    this.shadowRoot.innerHTML = `
+    this.render();
+    this.setAttributes();
+  }
+
+  render() {
+    const template = document.createElement('template');
+    template.innerHTML = `
       <style>
         :host {
+          display: inline-block;
           position: relative;
-          display: block;
-          padding-left: 20px;
-          margin-bottom: 15px;
-        }
-        :host([aria-checked="true"]) {
-          outline: none !important;
-        }
+          cursor: default;
+        }    
+        :host(:focus) {
+          outline: 0;
+        }    
+        :host(:focus)::before {
+          box-shadow: 0 0 1px 2px #5B9DD9;
+        }    
         :host::before {
           content: '';
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 15px;
-          height: 15px;
-          border: 1px solid #eee;
-          left: 0;
-          position: absolute;         
-          border-radius: 50%;
-        }
-        :host([aria-checked="true"])::before {
-          content: '';
           display: block;
-          width: 5px;
-          height: 5px;
-          background: #6f64f8;
+          width: 10px;
+          height: 10px;
+          border: 1px solid #eee;
+          background: #eee;
           position: absolute;
-          border: 5px solid #eee;;         
+          left: -18px;
+          top: 3px;
           border-radius: 50%;
+        }      
+        :host([aria-checked="true"])::before {
+          background: #6f64f8;
         }
+        :host(:hover) {
+            cursor: pointer;
+        }      
       </style>
       <slot></slot>
     `;
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+  }
+
+  setAttributes() {
+    if (!this.hasAttribute('role')) {
+      this.setAttribute('role', 'radio');
+    }
+
+    if (!this.hasAttribute('tabindex')) {
+      this.setAttribute('tabindex', -1);
+    }
   }
 }
 customElements.define('radio-button', RadioButton);
@@ -51,44 +64,72 @@ class RadioGroup extends HTMLElement {
   constructor() {
     super();
   }
+
+  get checkedBtn() {
+    return this.querySelector('[aria-checked="true"]');
+  }
+
   connectedCallback() {
-    this.setAttribute('role', 'radiogroup');
-    this.radios = [...this.querySelectorAll('radio-button')];
-    if (this.hasAttribute('selected')) {
-      let selected = this.getAttribute('selected');
-      this._selected = selected;
-      this.radios[selected].setAttribute('tabindex', 0);
-      this.radios[selected].setAttribute('aria-checked', true);
+    this.render();
+
+    if (!this.hasAttribute('role')) {
+      this.setAttribute('role', 'radiogroup');
+    }
+    if (this.checkedBtn) {
+      this.uncheckAll();
+      this.checkNode(this.checkedBtn);
     } else {
-      this._selected = 0;
-      // this.radios[0].setAttribute('tabindex', 0);
+      if (this.querySelector('[role="radio"]')) {
+        this.querySelector('[role="radio"]').setAttribute('tabindex', 0);
+      }
     }
-    this.addEventListener('click', this.handleClick.bind(this));
+    this.addEventListener('click', this.onClick);
   }
 
-  handleClick(e) {
-    const idx = this.radios.indexOf(e.target);
-    if (idx === -1) {
-      return;
-    }
-    this.selected = idx;
+  render() {
+    const template = document.createElement('template');
+    template.innerHTML = `
+      <style>
+        :host {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          padding-left: 20px;
+        }
+      </style>
+      <slot></slot>
+    `;
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
-  set selected(idx) {
-    if (isFinite(this.selected)) {
-      let previousSelected = this.radios[this.selected];
-      previousSelected.tabIndex = -1;
-      previousSelected.removeAttribute('aria-checked', false);
-    }
-    let newSelected = this.radios[idx];
-    newSelected.tabIndex = 0;
-    newSelected.focus();
-    newSelected.setAttribute('aria-checked', true);
-    this.setAttribute('selected', idx);
-    this._selected = idx;
+  setChecked(node) {
+    this.uncheckAll();
+    this.checkNode(node);
+    this.focusNode(node);
   }
-  get selected() {
-    return this._selected;
+
+  uncheckAll() {
+    const radioBts = this.querySelectorAll('[role="radio"]');
+    radioBts.forEach((btn) => {
+      btn.setAttribute('aria-checked', 'false');
+      btn.tabIndex = -1;
+    });
+  }
+
+  checkNode(node) {
+    node.setAttribute('aria-checked', 'true');
+    node.tabIndex = 0;
+  }
+
+  focusNode(node) {
+    node.focus();
+  }
+
+  onClick(evt) {
+    if (evt.target.getAttribute('role') === 'radio') {
+      this.setChecked(evt.target);
+    }
   }
 }
 customElements.define('radio-group', RadioGroup);

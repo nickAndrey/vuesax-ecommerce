@@ -15,6 +15,7 @@ class Filters {
 
   render(data) {
     const checkboxTempl = document.createElement('template');
+
     checkboxTempl.innerHTML = `
       <div class="form-group">
         <app-checkbox></app-checkbox>
@@ -35,23 +36,22 @@ class Filters {
       }
 
       if (item.multirange) {
-        const radioTeml = document.createElement('template');
-        radioTeml.innerHTML = `<radio-button></radio-button>`;
-        this.section = 'radio-group';
         this.component = 'radio-button';
-        this.renderRadio(item.multirange, radioTeml, this.section, this.component);
+        this.renderRadio(item.multirange, this.component);
       }
     });
   }
 
-  renderRadio(data, template, section, component) {
+  renderRadio(data, component) {
+    const fragment = document.createDocumentFragment();
     data.map((item) => {
-      const clone = template.content.cloneNode(true);
-      const inp = clone.querySelector(component);
-      inp.name = item.name;
-      inp.textContent = item.title;
-      this.filtersNode.querySelector('.multirange radio-group').appendChild(inp);
+      const radioBtn = document.createElement(component);
+      radioBtn.textContent = item.title;
+      fragment.appendChild(radioBtn)
     });
+    const radioGroup = document.createElement('radio-group');
+    radioGroup.appendChild(fragment);
+    this.filtersNode.querySelector('.multirange').appendChild(radioGroup);
   }
 
   renderCategory(data, template, section, component) {
