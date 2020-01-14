@@ -27,11 +27,17 @@ class AddToCart extends AppButton {
     ]);
   }
 
+  setProductCount() {
+    const counter = document.createElement('app-counter');
+    this.shadowRoot.innnerHtml = counter;
+  }
+
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener(`click`, () => {
       this.addToStore();
       this.storeService.updateProductsCounter();
+      this.setProductCount();
     });
   }
 }

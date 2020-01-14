@@ -72,11 +72,6 @@ export class Filters {
       this.filtersNode.querySelector(`.${section}`).appendChild(formGroup);
     });
   }
-
-  handleFilter() {
-    const filters = document.querySelectorAll('[filter-by]');
-    filters.forEach((item) => {});
-  }
 }
 
 let filters = new Filters();
@@ -95,7 +90,7 @@ class FilterComponent extends CheckboxComponent {
   attachEvents(node) {
     node.addEventListener('click', (evt) => {
       const products = document.querySelectorAll('product-component');
-      [...products].map((product) => {
+      [...products].filter((product) => {
         if (product.getAttribute('category') !== evt.target.getAttribute('filter-by')) {
           product.setAttribute('hidden', 'hidden');
         }

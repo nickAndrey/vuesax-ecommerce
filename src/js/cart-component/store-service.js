@@ -19,6 +19,10 @@ export class StoreService {
     localStorage.setItem('products', JSON.stringify(productsList));
   }
 
+  removeProduct(id) {
+    console.log(id);
+  }
+
   updateProductsCounter() {
     const counter = document.querySelector('label-component');
     if (counter) {

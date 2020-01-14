@@ -80,8 +80,22 @@
         </section>
       </header>
       <section class="products-and-filters">
-        <section class="filters">
+        <div class="page-settings">
           <span>filters</span>
+          <div class="products__setting">
+            <span class="filter-results">Filters result: </span>
+            <div class="right-group">
+              <button type="button" aria-label="choose smth">Default</button>
+              <button type="button" aria-label="grid view" class="grid-view">
+                <img src="/img/navbar/grid.svg" alt="grid view" />
+              </button>
+              <button type="button" aria-label="list view" class="list-view">
+                <img src="/img/navbar/list.svg" alt="list view" />
+              </button>
+            </div>
+          </div>
+        </div>
+        <section class="filters">
           <section class="multirange">
             <h4 class="title">Multirange</h4>
           </section>
@@ -99,18 +113,6 @@
           </section>
         </section>
         <section class="products">
-          <div class="products__setting">
-            <span class="filter-results">Filters result: </span>
-            <div class="right-group">
-              <button type="button" aria-label="choose smth">Default</button>
-              <button type="button" aria-label="grid view" class="grid-view">
-                <img src="/img/navbar/grid.svg" alt="grid view" />
-              </button>
-              <button type="button" aria-label="list view" class="list-view">
-                <img src="/img/navbar/list.svg" alt="list view" />
-              </button>
-            </div>
-          </div>
           <div class="products__search-box">
             <input type="text" aria-label="search product" title="search products" placeholder="Search..." />
             <button type="button" aria-label="go search" class="go-search">

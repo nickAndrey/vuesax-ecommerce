@@ -52,7 +52,7 @@ class CartNotification {
           <td>${item.price}</td>
           <td>${item.describe}</td>
           <td>count-component</td>
-          <td>remove item</td>
+          <td><app-button>remove</app-button></td>
         </tr>
       `;
       table.innerHTML += row;

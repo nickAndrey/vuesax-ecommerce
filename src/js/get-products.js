@@ -1,16 +1,12 @@
-import { Filters } from './filter-component/fproducts-filter';
-
 class GetProducts {
   constructor() {
     this.apiProducts = `https://my-json-server.typicode.com/nickAndrey/vuesax-ecommerce/goods`;
-    this.filters = new Filters();
   }
 
   onInit() {
     fetch(this.apiProducts)
       .then((resp) => resp.json())
       .then((data) => this.render(data))
-      .then(() => this.filters.handleFilter())
       .catch((errMsg) => console.error(errMsg));
   }
 
