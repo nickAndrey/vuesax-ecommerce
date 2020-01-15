@@ -11,32 +11,37 @@ class GetProducts {
   }
 
   render(data) {
+    const template = document.querySelector('#product-component');
     data.map((item, idx) => {
-      const productComponent = document.createElement('product-component');
-      productComponent.setAttribute('index', idx);
-      productComponent.setAttribute('category', item.category);
-      productComponent.innerHTML = `
-        <img src="${item.src}" alt="${item.title}" class="product__img" slot="product-img"/>
-        <button class="vote" slot="rating">${item.rating}</button>
-        <span class="price" slot="price">${item.price}$</span>
-        <h4 class="title" slot="title">${item.title}</h4>
-        <p class="description" slot="description">${item.description}</p>
-        <app-button
-          slot="wish"
-          icon="/img/goods/like.svg"
-          aria-label="like product" 
-          class="like"
-        >wish list</app-button>
-        <app-add-to-cart 
-            slot="add" 
-            data-index="${idx}" 
-            icon="/img/goods/add-to-cart.svg"
-            aria-label="add product" 
-            class="add"
-        >add to cart</app-add-to-cart>
+      const clone = template.content.cloneNode(true);
+      const productNode = clone.querySelector('.product');
+      productNode.dataset.index = idx;
+      productNode.setAttribute('category', item.category);
+
+      const pictNode = document.createElement('picture');
+      pictNode.innerHTML = `
+        <source type="image/webp" srcset="${item.srcWebp}"/>
+        <img src="${item.src}" alt="${item.title}" class="product__img"/>
       `;
+      productNode.insertBefore(pictNode, productNode.querySelector('.product__info'));
+
+      const voteNode = productNode.querySelector('.vote');
+      voteNode.textContent = item.rating;
+
+      const priceNode = productNode.querySelector('.price');
+      priceNode.textContent = item.price;
+
+      const titleNode = productNode.querySelector('.title');
+      titleNode.textContent = item.title;
+
+      const descriptionNode = productNode.querySelector('.description');
+      descriptionNode.textContent = item.description;
+
+      const addBtn = productNode.querySelector('.controls .add');
+      addBtn.dataset.index = idx;
+
       const prodList = document.querySelector('.products');
-      prodList.append(productComponent);
+      prodList.append(productNode);
     });
   }
 }

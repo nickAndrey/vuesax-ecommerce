@@ -123,6 +123,28 @@
       </section>
     </main>
 
+    <template id="product-component">
+      <div class="product">
+        <div class="product__info">
+          <div class="price-info">
+            <button class="vote"></button>
+            <span class="price"></span>
+          </div>
+          <h4 class="title"></h4>
+          <p class="description"></p>
+          <div class="controls">
+            <button type="button" class="like" aria-label="like a product">
+              <img src="/img/goods/like.svg" alt="like">
+              like
+            </button>
+            <button type="button" class="add" aria-label="add product to cart">
+              <img src="/img/goods/add-to-cart.svg" alt="add to cart">
+              add to cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
     <script src="./main.bundle.js" async></script>
   </body>
 </html>

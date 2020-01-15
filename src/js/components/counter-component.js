@@ -47,8 +47,6 @@ class CounterComponent extends HTMLElement {
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
-
-  attachEvents() {}
 }
 
 customElements.define('app-counter', CounterComponent);

@@ -2,6 +2,7 @@
   .side-nav {
     @include panel;
   }
+  @import "components/product-component";
   .wrapper {
     padding: 30px 36px 34px;
     .products-and-filters {
