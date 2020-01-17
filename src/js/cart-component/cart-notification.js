@@ -7,21 +7,21 @@ class CartNotification {
   }
 
   onInit() {
-    this.showCountProducts();
+    this.showCountInLabel();
     this.attachEvents();
   }
 
-  showCountProducts() {
-    const counterComponent = document.createElement('label-component');
-    counterComponent.setAttribute('counter', JSON.stringify(this.storeService.getProducts().length));
-    const counter = counterComponent.getAttribute('counter');
+  showCountInLabel() {
+    const labelComponent = document.createElement('label-component');
+    labelComponent.setAttribute('counter', JSON.stringify(this.storeService.getProducts().length));
+    const counter = labelComponent.getAttribute('counter');
 
-    this.setCounterStyles(counterComponent);
-    counterComponent.textContent = counter;
-    this.target.appendChild(counterComponent);
+    this.setLabelStyles(labelComponent);
+    labelComponent.textContent = counter;
+    this.target.appendChild(labelComponent);
   }
 
-  setCounterStyles(component) {
+  setLabelStyles(component) {
     component.setAttribute('width', '20');
     component.setAttribute('height', '20');
     component.setAttribute('background', '#6f64f8');
@@ -51,7 +51,12 @@ class CartNotification {
           <td>${item.title}</td>
           <td>${item.price}</td>
           <td>${item.describe}</td>
-          <td>count-component</td>
+          <td>
+            <app-counter 
+              count=${item.counter}
+              data-index="${item.id}">
+            </app-counter>
+          </td>
           <td><app-button>remove</app-button></td>
         </tr>
       `;

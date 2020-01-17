@@ -67,9 +67,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        * {
-          pointer-events: none;
-        }
 
         &:before {
           position: absolute;
@@ -83,6 +80,11 @@
         border-radius: 0 0 8px 0;
         background: #6f64f8;
         color: #ffffff;
+        transition: 0.3s;
+
+        &:hover {
+          background: rgba(64, 58, 143, 0.9);
+        }
       }
     }
   }

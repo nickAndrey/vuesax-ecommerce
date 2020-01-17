@@ -1,10 +1,70 @@
+import { StoreService } from '../cart-component/store-service';
+
 class CounterComponent extends HTMLElement {
   constructor() {
     super();
+    this.storeService = new StoreService();
   }
 
   connectedCallback() {
     this.render();
+    this.attachEvents();
+  }
+
+  static get observedAttributes() {
+    return ['count', 'data-index'];
+  }
+
+  get countAttribute() {
+    return this.getAttribute('count');
+  }
+
+  get productIndex() {
+    return this.dataset.index;
+  }
+
+  setCountInStore() {
+    this.storeService.setCountProducts(this.countAttribute, this.productIndex);
+  }
+
+  attachEvents() {
+    const component = this.shadowRoot.querySelector('.number');
+    const counterInp = component.querySelector('input[type="number"]');
+    component.addEventListener('change', (evt) => {
+      const target = evt.target;
+      if (target === counterInp) {
+        this.setCountHandle(target);
+      }
+    });
+
+    component.addEventListener('click', (evt) => {
+      const target = evt.target;
+      if (target.classList.contains('minus')) {
+        this.decrementCounter(counterInp);
+      } else if (target.classList.contains('plus')) {
+        this.incrementCounter(counterInp);
+      }
+    });
+  }
+
+  incrementCounter(inp) {
+    ++inp.value;
+    this.setAttribute('count', inp.value);
+    this.setCountInStore();
+  }
+
+  decrementCounter(inp) {
+    if (inp.value < 2) {
+      return;
+    }
+    --inp.value;
+    this.setAttribute('count', inp.value);
+    this.setCountInStore();
+  }
+
+  setCountHandle(inp) {
+    this.setAttribute('count', inp.value);
+    this.setCountInStore();
   }
 
   render() {
@@ -18,29 +78,29 @@ class CounterComponent extends HTMLElement {
          display: flex;
         }
         .minus, .plus {
-          width: 12px;
-          height: 12px;
-          background: #f2f2f2;
-          border-radius: 25px;         
-          border: 1px solid #ddd;
+          width: 14px;
+          height: 14px;
+          border-radius: 2px;         
+          border: 1px solid ;
           display: flex;
           align-items: center;
           justify-content: center;
         }
         input {
-          height:12px;
+          height: 12px;
           width: 50px;
           text-align: center;
           font-size: 14px;
-          border:1px solid #ddd;
-          border-radius:4px;
+          border: 1px solid #ddd;
+          border-radius: 2px;
           display: inline-block;
           vertical-align: middle;
+          margin: 0 5px;
         }       
       </style>
       <div class="number">
         <span class="minus">-</span>
-        <input type="text" value="1"/>
+        <input type="number" value="${this.countAttribute}" min="1"/>
         <span class="plus">+</span>
       </div>
     `;

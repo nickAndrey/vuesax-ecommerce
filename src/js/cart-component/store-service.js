@@ -23,10 +23,16 @@ export class StoreService {
     console.log(id);
   }
 
-  updateProductsCounter() {
-    const counter = document.querySelector('label-component');
-    if (counter) {
-      counter.setAttribute('counter', JSON.stringify(this.getProducts().length));
+  showCountProducts() {
+    const labelComponent = document.querySelector('label-component');
+    if (labelComponent) {
+      labelComponent.setAttribute('counter', JSON.stringify(this.getProducts().length));
     }
+  }
+
+  setCountProducts(count, index) {
+    const productsList = this.getProducts();
+    productsList[index].counter = count;
+    localStorage.setItem('products', JSON.stringify(productsList));
   }
 }
