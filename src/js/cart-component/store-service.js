@@ -19,8 +19,10 @@ export class StoreService {
     localStorage.setItem('products', JSON.stringify(productsList));
   }
 
-  removeProduct(id) {
-    console.log(id);
+  removeProduct(idx) {
+    let productsList = this.getProducts();
+    let updateProductsList = productsList.filter((product) => product.id !== idx);
+    localStorage.setItem('products', JSON.stringify(updateProductsList));
   }
 
   showCountProducts() {
@@ -32,7 +34,7 @@ export class StoreService {
 
   setCountProducts(count, index) {
     const productsList = this.getProducts();
-    productsList[index].counter = count;
+    productsList.filter((item) => item.id === index)[0].counter = count;
     localStorage.setItem('products', JSON.stringify(productsList));
   }
 }

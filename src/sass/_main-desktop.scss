@@ -1,8 +1,10 @@
+@import 'components/product-component';
+@import 'components/button';
+
 @media (min-width: $desktop) {
   .side-nav {
     @include panel;
   }
-  @import "components/product-component";
   .wrapper {
     padding: 30px 36px 34px;
     .products-and-filters {

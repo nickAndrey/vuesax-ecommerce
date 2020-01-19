@@ -1,8 +1,12 @@
 import { StoreService } from '../cart-component/store-service';
+import { ProductsTable } from '../cart-component/products-table';
+import { ProductService } from './product-service';
 
 class CartNotification {
   constructor() {
     this.storeService = new StoreService();
+    this.productsTable = new ProductsTable();
+    this.productService = new ProductService();
     this.target = document.querySelector('.notifications');
   }
 
@@ -32,40 +36,22 @@ class CartNotification {
   showModalProducts() {
     const modalProducts = document.createElement('modal-component');
     modalProducts.title = 'products';
-
-    const products = this.storeService.getProducts();
-    let table = document.createElement('table');
-    table.innerHTML = `<tr>
-        <th>id</th>
-        <th>name</th>
-        <th>price</th>
-        <th>description</th>
-        <th>count</th>              
-        <th>action</th>              
-    </tr>`;
-    table.classList.add('products-table');
-    products.map((item) => {
-      const row = `
-        <tr>
-          <td>${item.id}</td>
-          <td>${item.title}</td>
-          <td>${item.price}</td>
-          <td>${item.describe}</td>
-          <td>
-            <app-counter 
-              count=${item.counter}
-              data-index="${item.id}">
-            </app-counter>
-          </td>
-          <td><app-button>remove</app-button></td>
-        </tr>
-      `;
-      table.innerHTML += row;
-    });
-
-    modalProducts.appendChild(table);
     this.setModalStyles(modalProducts);
+    modalProducts.appendChild(this.productsTable.renderTable());
     document.body.appendChild(modalProducts);
+    this.onRemoveProduct(modalProducts);
+  }
+
+  onRemoveProduct(modal) {
+    const btnList = modal.shadowRoot.host.querySelectorAll('.remove-product');
+    btnList.forEach((btn) => {
+      btn.onclick = (evt) => {
+        this.storeService.removeProduct(btn.dataset.index);
+        this.storeService.showCountProducts();
+        this.productService.hideCounterProducts();
+        evt.target.closest('tr').remove();
+      }
+    });
   }
 
   setModalStyles(component) {

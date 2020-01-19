@@ -1,6 +1,6 @@
 import { StoreService } from './store-service';
 
-class ProductService {
+export class ProductService {
   constructor() {
     this.storeService = new StoreService();
     this.products = document.querySelector('.products');
@@ -18,22 +18,34 @@ class ProductService {
         price: parent.querySelector('.price').textContent.substr(1),
         title: parent.querySelector('.title').textContent,
         describe: parent.querySelector('.description').textContent,
-        counter: 1
+        counter: 1,
       },
     ]);
   }
 
-  toggleBtnContent(btn) {
+  showCounterProducts(btn) {
     btn.childNodes[0].style.display = 'none';
     btn.childNodes[1].style.display = 'none';
 
     const productsList = this.storeService.getProducts();
-    const countProducts = productsList[btn.dataset.index].counter;
-
+    const countProducts = productsList.filter((item) => item.id === btn.dataset.index)[0].counter;
     const appCounter = `<app-counter count="${countProducts}" data-index="${btn.dataset.index}"></app-counter>`;
+
     if (!btn.querySelector('app-counter')) {
       btn.innerHTML += appCounter;
     }
+  }
+
+  hideCounterProducts() {
+    [...document.querySelectorAll('.add')]
+      .filter((item) => {
+        return item.querySelector('app-counter');
+      })
+      .map((button) => {
+        button.querySelector('app-counter').remove();
+        button.childNodes[0].style.display = '';
+        button.childNodes[1].style.display = '';
+      });
   }
 
   attachEvents() {
@@ -41,8 +53,8 @@ class ProductService {
       const target = evt.target;
       if (target.classList.contains('add')) {
         this.addToStore(target);
+        this.showCounterProducts(target);
         this.storeService.showCountProducts();
-        this.toggleBtnContent(target);
       }
     });
   }
