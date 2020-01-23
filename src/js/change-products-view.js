@@ -1,22 +1,32 @@
-(function() {
-  const products = document.querySelector('.products');
+class ChangeProductsView {
+  constructor() {
+    this.productSetting = document.querySelector('.products__setting');
+    this.products = document.querySelector('.products');
+  }
 
-  const btnListView = products.querySelector('.list-view');
-  const goListView = () => {
-    products.classList.add('wide');
-  };
+  onInit() {
+    this.onEvents();
+  }
 
-  const btnGridView = products.querySelector('.grid-view');
-  const goGridView = () => {
-    products.classList.remove('wide');
-  };
+  switchToGridView(className) {
+    this.products.classList.remove(className);
+  }
 
-  products.addEventListener('click', (evt) => {
-    const target = evt.target;
-    if (target === btnListView) {
-      goListView(target);
-    } else if (target === btnGridView) {
-      goGridView(target);
-    }
-  });
-})();
+  switchToLineView(className) {
+    this.products.classList.add(className);
+  }
+
+  onEvents() {
+    this.productSetting.addEventListener('click', (evt) => {
+      let target = evt.target;
+      if (target.classList.contains('list-view')) {
+        this.switchToLineView('wide');
+      } else if (target.classList.contains('grid-view')) {
+        this.switchToGridView('wide');
+      }
+    });
+  }
+}
+
+const changeProductsView = new ChangeProductsView();
+changeProductsView.onInit();
