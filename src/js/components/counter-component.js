@@ -71,6 +71,12 @@ class CounterComponent extends HTMLElement {
     const template = document.createElement('template');
     template.innerHTML = `
       <style>
+        :host {
+          background: #ffffff;
+          padding: 5px;
+          color: #000000;
+          border-radius: 20px;
+        }
         span {
           cursor:pointer; 
         }
@@ -78,20 +84,19 @@ class CounterComponent extends HTMLElement {
          display: flex;
         }
         .minus, .plus {
-          width: 14px;
-          height: 14px;
-          border-radius: 2px;         
-          border: 1px solid ;
+          width: 20px;
+          height: 20px;
+          border-radius: 20px;
+          border: 1px solid;
           display: flex;
           align-items: center;
           justify-content: center;
         }
         input {
-          height: 12px;
           width: 50px;
           text-align: center;
           font-size: 14px;
-          border: 1px solid #ddd;
+          border: none;
           border-radius: 2px;
           display: inline-block;
           vertical-align: middle;
